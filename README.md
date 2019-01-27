@@ -16,7 +16,7 @@ Web Workers API is promising.
 This is an experimental library to provide an easy
 way to call web workers.
 It's more or less for fun,
-but feedbacks are welcome to make this for product.
+but feedbacks are welcome to make this for production.
 
 Install
 -------
