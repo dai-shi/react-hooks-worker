@@ -62,3 +62,8 @@ You can also try them in codesandbox.io:
 [01](https://codesandbox.io/s/github/dai-shi/react-hooks-worker/tree/master/examples/01_minimal)
 [02](https://codesandbox.io/s/github/dai-shi/react-hooks-worker/tree/master/examples/02_typescript)
 [03](https://codesandbox.io/s/github/dai-shi/react-hooks-worker/tree/master/examples/03_comparison)
+
+Blogs
+-----
+
+- [https://medium.com/@dai_shi/playing-with-react-hooks-and-web-workers-2ebdf1c93dea](Playing with React Hooks and Web Workers)
