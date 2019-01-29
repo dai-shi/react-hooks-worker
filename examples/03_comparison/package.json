@@ -1,0 +1,28 @@
+{
+  "name": "react-hooks-worker-example",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@types/node-fetch": "^2.1.4",
+    "@types/react": "^16.7.6",
+    "@types/react-dom": "^16.0.9",
+    "core-js": "^2.5.7",
+    "react": "next",
+    "react-dom": "next",
+    "react-hooks-worker": "latest",
+    "react-scripts": "^2.1.1",
+    "typescript": "^3.1.6"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
