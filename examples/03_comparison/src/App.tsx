@@ -19,23 +19,25 @@ const App = () => {
     return () => clearTimeout(timer);
   });
   return (
-    <div style={{ marginTop: 60 }}>
-      <button type="button" onClick={toggle}>Toggle Mode</button>
-      {mode === 'worker' && (
-        <div>
-          <h3>Web Worker Mode</h3>
-          fib({count})
-          <CalcFib count={count} />
-        </div>
-      )}
-      {mode === 'normal' && (
-        <div>
-          <h3>Normal Mode</h3>
-          fib({count})
-          <CalcFib2 count={count} />
-        </div>
-      )}
-    </div>
+    <React.StrictMode>
+      <div style={{ marginTop: 60 }}>
+        <button type="button" onClick={toggle}>Toggle Mode</button>
+        {mode === 'worker' && (
+          <div>
+            <h3>Web Worker Mode</h3>
+            fib({count})
+            <CalcFib count={count} />
+          </div>
+        )}
+        {mode === 'normal' && (
+          <div>
+            <h3>Normal Mode</h3>
+            fib({count})
+            <CalcFib2 count={count} />
+          </div>
+        )}
+      </div>
+    </React.StrictMode>
   );
 };
 

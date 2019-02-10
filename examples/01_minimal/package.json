@@ -4,8 +4,8 @@
   "private": true,
   "dependencies": {
     "core-js": "^2.5.7",
-    "react": "next",
-    "react-dom": "next",
+    "react": "latest",
+    "react-dom": "latest",
     "react-hooks-worker": "latest",
     "react-scripts": "^2.1.1"
   },

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic spec should create a component 1`] = `
+<div>
+  Result:
+</div>
+`;

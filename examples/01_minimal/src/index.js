@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 
 import { useWorker } from 'react-hooks-worker';
@@ -10,9 +10,11 @@ const CalcFib = ({ count }) => {
 };
 
 const App = () => (
-  <div>
-    <CalcFib count={5} />
-  </div>
+  <StrictMode>
+    <div>
+      <CalcFib count={5} />
+    </div>
+  </StrictMode>
 );
 
 ReactDOM.render(<App />, document.getElementById('app'));

@@ -1,20 +1,21 @@
-/* eslint-env jest */
-
-// import React from 'react';
-// import { configure, mount } from 'enzyme';
-// import toJson from 'enzyme-to-json';
-// import Adapter from 'enzyme-adapter-react-16';
+import React from 'react';
+import ShallowRenderer from 'react-test-renderer/shallow';
 
 import { useWorker } from '../src/index';
-
-// configure({ adapter: new Adapter() });
 
 describe('basic spec', () => {
   it('should have a function', () => {
     expect(useWorker).toBeDefined();
   });
 
-  it.skip('should create a component', () => {
-    // TODO
+  it('should create a component', () => {
+    const CalcFib = ({ count }) => {
+      const { result, error } = useWorker('./slow_fib.js', count);
+      if (error) return <div>Error:{error}</div>;
+      return <div>Result:{result}</div>;
+    };
+    const renderer = new ShallowRenderer();
+    renderer.render(<CalcFib count={5} />);
+    expect(renderer.getRenderOutput()).toMatchSnapshot();
   });
 });
