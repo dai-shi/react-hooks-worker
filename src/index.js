@@ -7,7 +7,7 @@ import {
 export const useWorker = (url, message) => {
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
-  const worker = useRef();
+  const worker = useRef(null);
   useEffect(() => {
     const w = new Worker(url);
     w.onmessage = (e) => {

@@ -26,7 +26,7 @@ var useWorker = function useWorker(url, message) {
       error = _useState4[0],
       setError = _useState4[1];
 
-  var worker = (0, _react.useRef)();
+  var worker = (0, _react.useRef)(null);
   (0, _react.useEffect)(function () {
     var w = new Worker(url);
 
