@@ -66,4 +66,4 @@ You can also try them in codesandbox.io:
 Blogs
 -----
 
-- [https://medium.com/@dai_shi/playing-with-react-hooks-and-web-workers-2ebdf1c93dea](Playing with React Hooks and Web Workers)
+- [Playing with React Hooks and Web Workers](https://medium.com/@dai_shi/playing-with-react-hooks-and-web-workers-2ebdf1c93dea)
