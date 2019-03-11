@@ -1,16 +1,13 @@
-import {
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-export const useWorker = (url, message) => {
+export const useWorker = (workerInfo, message) => {
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
   const worker = useRef(null);
   useEffect(() => {
-    const w = new Worker(url);
-    w.onmessage = (e) => {
+    const w =
+      workerInfo instanceof Worker ? workerInfo : new Worker(workerInfo);
+    w.onmessage = e => {
       setResult(e.data);
       setError(null);
     };
@@ -27,7 +24,7 @@ export const useWorker = (url, message) => {
       w.terminate();
     };
     return cleanup;
-  }, [url]);
+  }, [workerInfo]);
   useEffect(() => {
     worker.current.postMessage(message);
   }, [message]);
