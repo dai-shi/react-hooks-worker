@@ -46,6 +46,16 @@ const App = () => (
 );
 ```
 
+Usage with Parcel
+--------
+Parcel allow your Web Worker script to be automatically bundled. To do this, just pass an instance of the Web Worker instead of the url:
+
+```javascript
+const myWorker = new Worker("./slow_fib.js")
+
+const { result, error } = useWorker(myWorker, count);
+```
+
 Examples
 --------
 

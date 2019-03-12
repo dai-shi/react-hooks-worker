@@ -15,7 +15,7 @@ function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = 
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-var useWorker = function useWorker(url, message) {
+var useWorker = function useWorker(workerInfo, message) {
   var _useState = (0, _react.useState)(null),
       _useState2 = _slicedToArray(_useState, 2),
       result = _useState2[0],
@@ -28,7 +28,7 @@ var useWorker = function useWorker(url, message) {
 
   var worker = (0, _react.useRef)(null);
   (0, _react.useEffect)(function () {
-    var w = new Worker(url);
+    var w = workerInfo instanceof Worker ? workerInfo : new Worker(workerInfo);
 
     w.onmessage = function (e) {
       setResult(e.data);
@@ -52,7 +52,7 @@ var useWorker = function useWorker(url, message) {
     };
 
     return cleanup;
-  }, [url]);
+  }, [workerInfo]);
   (0, _react.useEffect)(function () {
     worker.current.postMessage(message);
   }, [message]);
