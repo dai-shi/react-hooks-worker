@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [0.3.0] - 2019-03-11
+### Changed
+- Parcel Bundler support
+
 ## [0.2.0] - 2019-02-10
 ### Changed
 - Fixed null types

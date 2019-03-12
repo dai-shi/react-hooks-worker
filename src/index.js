@@ -5,9 +5,8 @@ export const useWorker = (workerInfo, message) => {
   const [error, setError] = useState(null);
   const worker = useRef(null);
   useEffect(() => {
-    const w =
-      workerInfo instanceof Worker ? workerInfo : new Worker(workerInfo);
-    w.onmessage = e => {
+    const w = workerInfo instanceof Worker ? workerInfo : new Worker(workerInfo);
+    w.onmessage = (e) => {
       setResult(e.data);
       setError(null);
     };
