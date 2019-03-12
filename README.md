@@ -1,5 +1,4 @@
-react-hooks-worker
-==================
+# react-hooks-worker
 
 [![Build Status](https://travis-ci.com/dai-shi/react-hooks-worker.svg?branch=master)](https://travis-ci.com/dai-shi/react-hooks-worker)
 [![npm version](https://badge.fury.io/js/react-hooks-worker.svg)](https://badge.fury.io/js/react-hooks-worker)
@@ -7,8 +6,7 @@ react-hooks-worker
 
 React custom hooks for web workers.
 
-Motivation
-----------
+## Motivation
 
 React Hooks API is promising.
 Web Workers API is promising.
@@ -18,15 +16,13 @@ way to call web workers.
 It's more or less for fun,
 but feedbacks are welcome to make this for production.
 
-Install
--------
+## Install
 
 ```bash
 npm install react-hooks-worker
 ```
 
-Usage
------
+## Usage
 
 ```javascript
 import React from 'react';
@@ -46,8 +42,8 @@ const App = () => (
 );
 ```
 
-Usage with Parcel
---------
+## Usage with Parcel
+
 Parcel allow your Web Worker script to be automatically bundled. To do this, just pass an instance of the Web Worker instead of the url:
 
 ```javascript
@@ -56,8 +52,7 @@ const myWorker = new Worker("./slow_fib.js")
 const { result, error } = useWorker(myWorker, count);
 ```
 
-Examples
---------
+## Examples
 
 The [examples](examples) folder contains working examples.
 You can run one of them with
@@ -73,7 +68,6 @@ You can also try them in codesandbox.io:
 [02](https://codesandbox.io/s/github/dai-shi/react-hooks-worker/tree/master/examples/02_typescript)
 [03](https://codesandbox.io/s/github/dai-shi/react-hooks-worker/tree/master/examples/03_comparison)
 
-Blogs
------
+## Blogs
 
 - [Playing with React Hooks and Web Workers](https://medium.com/@dai_shi/playing-with-react-hooks-and-web-workers-2ebdf1c93dea)
