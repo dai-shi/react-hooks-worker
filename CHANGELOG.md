@@ -1,6 +1,7 @@
 # Change Log
 
 ## [Unreleased]
+- Update dependencies
 
 ## [0.3.0] - 2019-03-11
 ### Changed
