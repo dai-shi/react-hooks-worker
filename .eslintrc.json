@@ -37,7 +37,9 @@
         "node-fetch"
       ]
     }],
-    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }]
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "camelcase": ["error", { "allow": ["^unstable_"] }],
+    "@typescript-eslint/camelcase": ["error", { "allow": ["^unstable_"] }]
   },
   "overrides": [{
     "files": ["__tests__/**/*"],

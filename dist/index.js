@@ -15,7 +15,26 @@ function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = 
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-var useWorker = function useWorker(workerInfo, message) {
+var batchedUpdates = function batchedUpdates(callback) {
+  if (_react.unstable_batchedUpdates) {
+    (0, _react.unstable_batchedUpdates)(callback);
+  } else {
+    callback();
+  }
+};
+
+var createWorker = function createWorker(func) {
+  if (func instanceof Worker) return func;
+  if (typeof func === 'string' && func.endsWith('.js')) return new Worker(func);
+  var code = ["self.func = ".concat(func.toString(), ";"), 'self.onmessage = async (e) => {', '  const r = self.func(...e.data);', '  if (r[Symbol.asyncIterator]) {', '    for await (const i of r) self.postMessage(i)', '  } else if (r[Symbol.iterator]){', '    for (const i of r) self.postMessage(i)', '  } else {', '    self.postMessage(await r)', '  }', '};'];
+  var blob = new Blob(code, {
+    type: 'text/javascript'
+  });
+  var url = URL.createObjectURL(blob);
+  return new Worker(url);
+};
+
+var useWorker = function useWorker(func, args) {
   var _useState = (0, _react.useState)(null),
       _useState2 = _slicedToArray(_useState, 2),
       result = _useState2[0],
@@ -26,36 +45,47 @@ var useWorker = function useWorker(workerInfo, message) {
       error = _useState4[0],
       setError = _useState4[1];
 
-  var worker = (0, _react.useRef)(null);
+  var worker = (0, _react.useMemo)(function () {
+    return createWorker(func);
+  }, [func]);
+  var lastWorker = (0, _react.useRef)(null);
   (0, _react.useEffect)(function () {
-    var w = workerInfo instanceof Worker ? workerInfo : new Worker(workerInfo);
+    lastWorker.current = worker;
 
-    w.onmessage = function (e) {
-      setResult(e.data);
-      setError(null);
+    worker.onmessage = function (e) {
+      if (lastWorker.current !== worker) return;
+      batchedUpdates(function () {
+        setResult(e.data);
+        setError(null);
+      });
     };
 
-    w.onerror = function () {
-      setResult(null);
-      setError('error');
+    worker.onerror = function () {
+      if (lastWorker.current !== worker) return;
+      batchedUpdates(function () {
+        setResult(null);
+        setError('error');
+      });
     };
 
-    w.onmessageerror = function () {
-      setResult(null);
-      setError('messageerror');
+    worker.onmessageerror = function () {
+      if (lastWorker.current !== worker) return;
+      batchedUpdates(function () {
+        setResult(null);
+        setError('messageerror');
+      });
     };
-
-    worker.current = w;
 
     var cleanup = function cleanup() {
-      w.terminate();
+      worker.terminate();
     };
 
     return cleanup;
-  }, [workerInfo]);
+  }, [worker]);
   (0, _react.useEffect)(function () {
-    worker.current.postMessage(message);
-  }, [message]);
+    var message = Array.isArray(args) ? args : [args];
+    lastWorker.current.postMessage(message);
+  }, [args]);
   return {
     result: result,
     error: error
