@@ -1,6 +1,6 @@
 export type UseWorker = <Result>(
-  workerInfo: string | Worker,
-  message: unknown
+  func: Function | string | Worker,
+  args: unknown
 ) => {
   result: Result | null;
   error: 'error' | 'messageerror' | null;

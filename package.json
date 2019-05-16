@@ -22,7 +22,9 @@
     "tsc-test": "tsc --project . --noEmit",
     "examples:minimal": "DIR=01_minimal EXT=js webpack-dev-server",
     "examples:typescript": "DIR=02_typescript webpack-dev-server",
-    "examples:comparison": "DIR=03_comparison webpack-dev-server"
+    "examples:comparison": "DIR=03_comparison webpack-dev-server",
+    "examples:inline": "DIR=04_inline webpack-dev-server",
+    "examples:generator": "DIR=05_generator webpack-dev-server"
   },
   "keywords": [
     "react",

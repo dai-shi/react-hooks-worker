@@ -1,7 +1,11 @@
 # Change Log
 
 ## [Unreleased]
+### Changed
 - Update dependencies
+### Added
+- Inline function support
+- Async generator support
 
 ## [0.3.0] - 2019-03-11
 ### Changed

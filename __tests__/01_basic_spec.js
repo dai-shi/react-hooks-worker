@@ -3,6 +3,8 @@ import ShallowRenderer from 'react-test-renderer/shallow';
 
 import { useWorker } from '../src/index';
 
+global.Worker = jest.fn();
+
 describe('basic spec', () => {
   it('should have a function', () => {
     expect(useWorker).toBeDefined();
