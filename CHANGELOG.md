@@ -1,6 +1,8 @@
 # Change Log
 
 ## [Unreleased]
+
+## [0.4.0] - 2019-05-16
 ### Changed
 - Update dependencies
 ### Added
