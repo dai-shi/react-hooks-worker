@@ -8,7 +8,7 @@ const calcFib = `
     let x2 = 1;
     let i = 0;
     while (i < x) {
-      yield x1;
+      yield '(calculating...) ' + x1;
       await new Promise(r => setTimeout(r, 100));
       [x1, x2] = [x2, x1 + x2];
       i += 1;
