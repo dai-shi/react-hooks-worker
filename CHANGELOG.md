@@ -1,6 +1,8 @@
 # Change Log
 
 ## [Unreleased]
+### Changed
+- Simplified input
 
 ## [0.4.0] - 2019-05-16
 ### Changed

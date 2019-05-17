@@ -20,7 +20,7 @@ const createWorker = (func) => {
   const code = [
     `self.func = ${func.toString()};`,
     'self.onmessage = async (e) => {',
-    '  const r = self.func(...e.data);',
+    '  const r = self.func(e.data);',
     '  if (r[Symbol.asyncIterator]) {',
     '    for await (const i of r) self.postMessage(i)',
     '  } else if (r[Symbol.iterator]){',
@@ -35,7 +35,7 @@ const createWorker = (func) => {
   return new Worker(url);
 };
 
-export const useWorker = (func, args) => {
+export const useWorker = (func, input) => {
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
   const worker = useMemo(() => createWorker(func), [func]);
@@ -69,8 +69,7 @@ export const useWorker = (func, args) => {
     return cleanup;
   }, [worker]);
   useEffect(() => {
-    const message = Array.isArray(args) ? args : [args];
-    lastWorker.current.postMessage(message);
-  }, [args]);
+    lastWorker.current.postMessage(input);
+  }, [input]);
   return { result, error };
 };
