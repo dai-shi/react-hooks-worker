@@ -1,6 +1,9 @@
 # Change Log
 
 ## [Unreleased]
+### Changed
+- Improve internal implementation with useReducer
+
 ## [0.5.0] - 2019-05-18
 ### Changed
 - Simplified input

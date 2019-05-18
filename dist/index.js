@@ -15,11 +15,36 @@ function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = 
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-var batchedUpdates = function batchedUpdates(callback) {
-  if (_react.unstable_batchedUpdates) {
-    (0, _react.unstable_batchedUpdates)(callback);
-  } else {
-    callback();
+var initialState = {
+  result: null,
+  error: null
+};
+
+var reducer = function reducer(state, action) {
+  switch (action.type) {
+    case 'init':
+      return initialState;
+
+    case 'result':
+      return {
+        result: action.result,
+        error: null
+      };
+
+    case 'error':
+      return {
+        result: null,
+        error: 'error'
+      };
+
+    case 'messageerror':
+      return {
+        result: null,
+        error: 'messageerror'
+      };
+
+    default:
+      throw new Error('no such action type');
   }
 };
 
@@ -35,15 +60,10 @@ var createWorker = function createWorker(func) {
 };
 
 var useWorker = function useWorker(func, input) {
-  var _useState = (0, _react.useState)(null),
-      _useState2 = _slicedToArray(_useState, 2),
-      result = _useState2[0],
-      setResult = _useState2[1];
-
-  var _useState3 = (0, _react.useState)(null),
-      _useState4 = _slicedToArray(_useState3, 2),
-      error = _useState4[0],
-      setError = _useState4[1];
+  var _useReducer = (0, _react.useReducer)(reducer, initialState),
+      _useReducer2 = _slicedToArray(_useReducer, 2),
+      state = _useReducer2[0],
+      dispatch = _useReducer2[1];
 
   var worker = (0, _react.useMemo)(function () {
     return createWorker(func);
@@ -52,32 +72,39 @@ var useWorker = function useWorker(func, input) {
   (0, _react.useEffect)(function () {
     lastWorker.current = worker;
 
+    var dispatchSafe = function dispatchSafe(action) {
+      return dispatch(action);
+    };
+
     worker.onmessage = function (e) {
-      if (lastWorker.current !== worker) return;
-      batchedUpdates(function () {
-        setResult(e.data);
-        setError(null);
+      return dispatchSafe({
+        type: 'result',
+        result: e.data
       });
     };
 
     worker.onerror = function () {
-      if (lastWorker.current !== worker) return;
-      batchedUpdates(function () {
-        setResult(null);
-        setError('error');
+      return dispatchSafe({
+        type: 'error'
       });
     };
 
     worker.onmessageerror = function () {
-      if (lastWorker.current !== worker) return;
-      batchedUpdates(function () {
-        setResult(null);
-        setError('messageerror');
+      return dispatchSafe({
+        type: 'messageerror'
       });
     };
 
     var cleanup = function cleanup() {
+      dispatchSafe = function dispatchSafe() {
+        return null;
+      }; // we should not dispatch after cleanup.
+
+
       worker.terminate();
+      dispatch({
+        type: 'init'
+      });
     };
 
     return cleanup;
@@ -85,10 +112,7 @@ var useWorker = function useWorker(func, input) {
   (0, _react.useEffect)(function () {
     lastWorker.current.postMessage(input);
   }, [input]);
-  return {
-    result: result,
-    error: error
-  };
+  return state;
 };
 
 exports.useWorker = useWorker;
