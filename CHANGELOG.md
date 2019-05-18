@@ -1,6 +1,8 @@
 # Change Log
 
 ## [Unreleased]
+
+## [0.6.0] - 2019-05-18
 ### Changed
 - Improve internal implementation with useReducer
 
