@@ -47,6 +47,39 @@ const App = () => (
 );
 ```
 
+## Working Issues
+
+If the `function` passed into `useWorker(function)` has external dependencies, then `function` must be in its own file and directly import those node modules.
+
+```javascript
+// SoonToBeWorkerFunction.js
+import SomeExternalModule from 'external-module-example'
+
+export default const calcFib = (x) => {
+  SomeExternalModule() // calcFib has an external dependency
+  const fib = i => (i <= 1 ? i : fib(i - 1) + fib(i - 2));
+  return fib(x);
+};
+```
+
+```javascript
+// App.js
+import React from 'react';
+import { useWorker } from 'react-hooks-worker';
+
+const CalcFib: React.FC<{ count: number }> = ({ count }) => {
+  const { result, error } = useWorker(calcFib, count);
+  if (error) return <div>Error:{error}</div>;
+  return <div>Result:{result}</div>;
+};
+
+const App = () => (
+  <div>
+    <CalcFib count={5} />
+  </div>
+);
+```
+
 ## Usage with Parcel
 
 Parcel allow your Web Worker script to be automatically bundled. To do this, just pass an instance of the Web Worker instead of the url:
