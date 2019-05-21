@@ -29,7 +29,7 @@ import React from 'react';
 
 import { useWorker } from 'react-hooks-worker';
 
-const calcFib = (x) => {
+const calcFib = x => {
   const fib = i => (i <= 1 ? i : fib(i - 1) + fib(i - 2));
   return fib(x);
 };
@@ -52,11 +52,12 @@ const App = () => (
 If the `function` passed into `useWorker(function)` has external dependencies, then `function` must be in its own file and directly import those node modules.
 
 ```javascript
-// SoonToBeWorkerFunction.js
+// WorkerFibFile.js
 import SomeExternalModule from 'external-module-example'
 
+// calcFib has an external dependency: `SomeExternalModule`
 export default const calcFib = (x) => {
-  SomeExternalModule() // calcFib has an external dependency
+  SomeExternalModule();
   const fib = i => (i <= 1 ? i : fib(i - 1) + fib(i - 2));
   return fib(x);
 };
@@ -66,17 +67,11 @@ export default const calcFib = (x) => {
 // App.js
 import React from 'react';
 import { useWorker } from 'react-hooks-worker';
-
-const CalcFib: React.FC<{ count: number }> = ({ count }) => {
-  const { result, error } = useWorker(calcFib, count);
-  if (error) return <div>Error:{error}</div>;
-  return <div>Result:{result}</div>;
-};
+import FibWorker from './WorkerFibFile';
 
 const App = () => (
-  <div>
-    <CalcFib count={5} />
-  </div>
+  const { result, error }= useWorker(FibWorker, 5);
+  return <div>{result}</div>
 );
 ```
 
@@ -85,7 +80,7 @@ const App = () => (
 Parcel allow your Web Worker script to be automatically bundled. To do this, just pass an instance of the Web Worker instead of the url:
 
 ```javascript
-const myWorker = new Worker("./slow_fib.js")
+const myWorker = new Worker('./slow_fib.js');
 
 const { result, error } = useWorker(myWorker, count);
 ```
