@@ -1,9 +1,8 @@
 import * as React from 'react';
+import { useEffect, useReducer, useState } from 'react';
 
 import CalcFib from './CalcFib';
 import CalcFib2 from './CalcFib2';
-
-const { useEffect, useReducer, useState } = React;
 
 const App = () => {
   const [count, setCount] = useState(35);
