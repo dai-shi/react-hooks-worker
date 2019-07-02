@@ -6,7 +6,6 @@
     "@types/node-fetch": "^2.1.4",
     "@types/react": "^16.7.6",
     "@types/react-dom": "^16.0.9",
-    "core-js": "^2.5.7",
     "react": "latest",
     "react-dom": "latest",
     "react-hooks-worker": "latest",
