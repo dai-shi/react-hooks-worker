@@ -36,8 +36,8 @@ const calcFib = (x) => {
 
 const CalcFib: React.FC<{ count: number }> = ({ count }) => {
   const { result, error } = useWorker(calcFib, count);
-  if (error) return <div>Error:{error}</div>;
-  return <div>Result:{result}</div>;
+  if (error) return <div>Error: {error}</div>;
+  return <div>Result: {result}</div>;
 };
 
 const App = () => (

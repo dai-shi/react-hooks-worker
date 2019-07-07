@@ -8,7 +8,7 @@ const App = () => {
   return (
     <React.StrictMode>
       <div>
-        count:{count}
+        <span>Count: {count}</span>
         <button type="button" onClick={() => setCount(count + 1)}>+1</button>
         <button type="button" onClick={() => setCount(count - 1)}>-1</button>
         <CalcFib count={count} />

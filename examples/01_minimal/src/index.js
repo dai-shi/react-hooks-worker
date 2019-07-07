@@ -5,8 +5,8 @@ import { useWorker } from 'react-hooks-worker';
 
 const CalcFib = ({ count }) => {
   const { result, error } = useWorker('./slow_fib.js', count);
-  if (error) return <div>Error:{error}</div>;
-  return <div>Result:{result}</div>;
+  if (error) return <div>Error: {error}</div>;
+  return <div>Result: {result}</div>;
 };
 
 const App = () => (

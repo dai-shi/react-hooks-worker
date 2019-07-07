@@ -10,8 +10,8 @@ const calcFib = (x: number) => {
 
 const CalcFib: React.FC<{ count: number }> = ({ count }) => {
   const { result, error } = useWorker(calcFib, count);
-  if (error) return <div>Error:{error}</div>;
-  return <div>Result:{result}</div>;
+  if (error) return <div>Error: {error}</div>;
+  return <div>Result: {result}</div>;
 };
 
 export default CalcFib;
