@@ -39,7 +39,11 @@ const createWorker = (func) => {
   ];
   const blob = new Blob(code, { type: 'text/javascript' });
   const url = URL.createObjectURL(blob);
-  return new Worker(url);
+  const worker = new Worker(url);
+  worker.cleanup = () => {
+    URL.revokeObjectURL(url);
+  };
+  return worker;
 };
 
 export const useWorker = (func, input) => {
@@ -55,6 +59,7 @@ export const useWorker = (func, input) => {
     const cleanup = () => {
       dispatchSafe = () => null; // we should not dispatch after cleanup.
       worker.terminate();
+      if (worker.cleanup) worker.cleanup();
       dispatch({ type: 'init' });
     };
     return cleanup;
