@@ -47,6 +47,11 @@ const App = () => (
 );
 ```
 
+## Caveat
+
+Using inline function or string representation has a potential risk
+of including malicious code. Please pay attention to protect from XSS.
+
 ## Working Issues
 
 If the `function` passed into `useWorker(function)` has external dependencies, then `function` must be in its own file and directly import those node modules.
