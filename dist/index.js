@@ -56,7 +56,13 @@ var createWorker = function createWorker(func) {
     type: 'text/javascript'
   });
   var url = URL.createObjectURL(blob);
-  return new Worker(url);
+  var worker = new Worker(url);
+
+  worker.cleanup = function () {
+    URL.revokeObjectURL(url);
+  };
+
+  return worker;
 };
 
 var useWorker = function useWorker(func, input) {
@@ -102,6 +108,7 @@ var useWorker = function useWorker(func, input) {
 
 
       worker.terminate();
+      if (worker.cleanup) worker.cleanup();
       dispatch({
         type: 'init'
       });
