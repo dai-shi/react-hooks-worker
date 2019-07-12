@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [0.7.0] - 2019-07-13
+### Changed
+- Revoke objectURL on cleanup (#9)
+
 ## [0.6.0] - 2019-05-18
 ### Changed
 - Improve internal implementation with useReducer
