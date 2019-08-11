@@ -11,10 +11,8 @@ React custom hooks for web workers.
 React Hooks API is promising.
 Web Workers API is promising.
 
-This is an experimental library to provide an easy
-way to call web workers.
-It's more or less for fun,
-but feedbacks are welcome to make this for production.
+This library is still experimental.
+Feedbacks are welcome.
 
 ## Install
 
@@ -24,18 +22,25 @@ npm install react-hooks-worker
 
 ## Usage
 
+slow_fib.js:
+```javascript
+import { exposeWorker } from 'react-hooks-worker';
+
+const fib = i => (i <= 1 ? i : fib(i - 1) + fib(i - 2));
+
+exposeWorker(fib);
+```
+
+app.js:
 ```javascript
 import React from 'react';
 
 import { useWorker } from 'react-hooks-worker';
 
-const calcFib = x => {
-  const fib = i => (i <= 1 ? i : fib(i - 1) + fib(i - 2));
-  return fib(x);
-};
+const worker = new Worker('./slow_fib', { type: 'module' });
 
-const CalcFib: React.FC<{ count: number }> = ({ count }) => {
-  const { result, error } = useWorker(calcFib, count);
+const CalcFib = ({ count }) => {
+  const { result, error } = useWorker(worker, count);
   if (error) return <div>Error: {error}</div>;
   return <div>Result: {result}</div>;
 };
@@ -47,48 +52,25 @@ const App = () => (
 );
 ```
 
-## Caveat
+## Bundler support requirements
 
-Using inline function or string representation has a potential risk
-of including malicious code. Please pay attention to protect from XSS.
+This library requires a bundler to recognize Web Worker properly.
+Not everything is tested, and we appreciate for your help.
 
-## Working Issues
+### Webpack
 
-If the `function` passed into `useWorker(function)` has external dependencies, then `function` must be in its own file and directly import those node modules.
+Use either libraries:
 
-```javascript
-// WorkerFibFile.js
-import SomeExternalModule from 'external-module-example'
+- [worker-plugin](https://github.com/GoogleChromeLabs/worker-plugin)
+- [worker-loader](https://github.com/webpack-contrib/worker-loader)
 
-// calcFib has an external dependency: `SomeExternalModule`
-export default const calcFib = (x) => {
-  SomeExternalModule();
-  const fib = i => (i <= 1 ? i : fib(i - 1) + fib(i - 2));
-  return fib(x);
-};
-```
+### Parcel
 
-```javascript
-// App.js
-import React from 'react';
-import { useWorker } from 'react-hooks-worker';
-import FibWorker from './WorkerFibFile';
+Parcel allow your Web Worker script to be automatically bundled.
 
-const App = () => (
-  const { result, error }= useWorker(FibWorker, 5);
-  return <div>{result}</div>
-);
-```
+### Rollup
 
-## Usage with Parcel
-
-Parcel allow your Web Worker script to be automatically bundled. To do this, just pass an instance of the Web Worker instead of the url:
-
-```javascript
-const myWorker = new Worker('./slow_fib.js');
-
-const { result, error } = useWorker(myWorker, count);
-```
+- [rollup-plugin-web-worker-loader](https://github.com/darionco/rollup-plugin-web-worker-loader)
 
 ## Examples
 

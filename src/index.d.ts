@@ -1,9 +1,11 @@
 export type UseWorker = <Result>(
-  func: Function | string | Worker,
+  worker: Worker,
   input: unknown
 ) => {
   result: Result | null;
   error: 'error' | 'messageerror' | null;
 };
+
+export type ExposeWorker = (func: Function) => void;
 
 export const useWorker: UseWorker;

@@ -1,5 +1,7 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+/* eslint-disable @typescript-eslint/no-var-requires */
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WorkerPlugin = require('worker-plugin');
+/* eslint-enable @typescript-eslint/no-var-requires */
 
 const { DIR, EXT = 'ts' } = process.env;
 
@@ -10,6 +12,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: `./examples/${DIR}/public/index.html`,
     }),
+    new WorkerPlugin(),
   ],
   module: {
     rules: [{
@@ -19,7 +22,10 @@ module.exports = {
         loader: 'babel-loader',
         options: {
           presets: [
-            '@babel/preset-env',
+            ['@babel/preset-env', {
+              useBuiltIns: 'usage',
+              corejs: 3,
+            }],
             '@babel/preset-react',
           ],
         },

@@ -1,6 +1,8 @@
 # Change Log
 
 ## [Unreleased]
+### Changed
+- BREAKING CHANGE: worker-based API (#10)
 
 ## [0.7.0] - 2019-07-13
 ### Changed
