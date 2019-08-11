@@ -17,10 +17,10 @@ const blob = new Blob([
   '};',
 ], { type: 'text/javascript' });
 const url = URL.createObjectURL(blob);
-const worker = new Worker(url);
+const createWorker = () => new Worker(url);
 
 const CalcFib: React.FC<{ count: number }> = ({ count }) => {
-  const { result, error } = useWorker(worker, count);
+  const { result, error } = useWorker(createWorker, count);
   if (error) return <div>Error: {error}</div>;
   return <div>Result: {result}</div>;
 };

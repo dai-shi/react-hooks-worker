@@ -42,8 +42,7 @@
     "@typescript-eslint/camelcase": ["error", { "allow": ["^unstable_"] }],
     "import/no-duplicates": "off",
     "no-restricted-globals": "off",
-    "no-restricted-syntax": "off",
-    "no-param-reassign": "off"
+    "no-restricted-syntax": "off"
   },
   "overrides": [{
     "files": ["__tests__/**/*"],

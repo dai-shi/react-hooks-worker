@@ -37,10 +37,10 @@ import React from 'react';
 
 import { useWorker } from 'react-hooks-worker';
 
-const worker = new Worker('./slow_fib', { type: 'module' });
+const createWorker = () => new Worker('./slow_fib', { type: 'module' });
 
 const CalcFib = ({ count }) => {
-  const { result, error } = useWorker(worker, count);
+  const { result, error } = useWorker(createWorker, count);
   if (error) return <div>Error: {error}</div>;
   return <div>Result: {result}</div>;
 };

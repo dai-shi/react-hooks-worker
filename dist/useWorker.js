@@ -66,12 +66,13 @@ var reducer = function reducer(state, action) {
   }
 };
 
-var useWorker = function useWorker(worker, input) {
+var useWorker = function useWorker(createWorker, input) {
   var _useReducer = (0, _react.useReducer)(reducer, initialState),
       _useReducer2 = _slicedToArray(_useReducer, 2),
       state = _useReducer2[0],
       dispatch = _useReducer2[1];
 
+  var worker = (0, _react.useMemo)(createWorker, [createWorker]);
   var lastWorker = (0, _react.useRef)(null);
   (0, _react.useEffect)(function () {
     lastWorker.current = worker;
@@ -105,6 +106,7 @@ var useWorker = function useWorker(worker, input) {
       }; // we should not dispatch after cleanup.
 
 
+      worker.terminate();
       dispatch({
         type: 'init'
       });

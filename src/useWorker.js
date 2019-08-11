@@ -1,4 +1,9 @@
-import { useEffect, useRef, useReducer } from 'react';
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useReducer,
+} from 'react';
 
 const initialState = { result: null, error: null };
 const reducer = (state, action) => {
@@ -16,8 +21,9 @@ const reducer = (state, action) => {
   }
 };
 
-export const useWorker = (worker, input) => {
+export const useWorker = (createWorker, input) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const worker = useMemo(createWorker, [createWorker]);
   const lastWorker = useRef(null);
   useEffect(() => {
     lastWorker.current = worker;
@@ -27,6 +33,7 @@ export const useWorker = (worker, input) => {
     worker.onmessageerror = () => dispatchSafe({ type: 'messageerror' });
     const cleanup = () => {
       dispatchSafe = () => null; // we should not dispatch after cleanup.
+      worker.terminate();
       dispatch({ type: 'init' });
     };
     return cleanup;

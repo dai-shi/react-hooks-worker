@@ -1,5 +1,5 @@
 export type UseWorker = <Result>(
-  worker: Worker,
+  creaetWorker: () => Worker,
   input: unknown
 ) => {
   result: Result | null;
