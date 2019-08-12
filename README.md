@@ -83,12 +83,14 @@ PORT=8080 npm run examples:minimal
 
 and open <http://localhost:8080> in your web browser.
 
+<!--
 You can also try them in codesandbox.io:
 [01](https://codesandbox.io/s/github/dai-shi/react-hooks-worker/tree/master/examples/01_minimal)
 [02](https://codesandbox.io/s/github/dai-shi/react-hooks-worker/tree/master/examples/02_typescript)
 [03](https://codesandbox.io/s/github/dai-shi/react-hooks-worker/tree/master/examples/03_comparison)
 [04](https://codesandbox.io/s/github/dai-shi/react-hooks-worker/tree/master/examples/04_inline)
 [05](https://codesandbox.io/s/github/dai-shi/react-hooks-worker/tree/master/examples/05_generator)
+-->
 
 ## Blogs
 
