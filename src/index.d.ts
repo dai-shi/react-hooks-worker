@@ -9,3 +9,4 @@ export type UseWorker = <Result>(
 export type ExposeWorker = (func: Function) => void;
 
 export const useWorker: UseWorker;
+export const exposeWorker: ExposeWorker;
