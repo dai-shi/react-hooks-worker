@@ -70,6 +70,7 @@ Parcel allow your Web Worker script to be automatically bundled.
 
 ### Rollup
 
+- [rollup-plugin-off-main-thread](https://github.com/surma/rollup-plugin-off-main-thread)
 - [rollup-plugin-web-worker-loader](https://github.com/darionco/rollup-plugin-web-worker-loader)
 
 ## Examples
