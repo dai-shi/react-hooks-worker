@@ -6,13 +6,21 @@
 
 React custom hooks for web workers.
 
-## Motivation
+## Introduction
 
-React Hooks API is promising.
-Web Workers API is promising.
+Web Workers are another thread from the main thread in browsers.
+We can run heavy computation in a separate thread so that
+users don't feel slowing down.
 
-This library is still experimental.
-Feedbacks are welcome.
+React provides a reactive system.
+This library hides the async nature of Web Workers with React custom hooks.
+Results returned by Web Workers are stored in a React local state.
+
+Developers can implement a worker as:
+- sync function
+- async function
+- sync generator function
+- async generator function
 
 ## Install
 
@@ -56,12 +64,11 @@ const App = () => (
 
 This library requires a bundler to recognize Web Worker properly.
 Not everything is tested, and we appreciate for your help.
+(So far, only tested with worker-plugin.)
 
 ### Webpack
 
-Use either libraries:
-
-- [worker-plugin](https://github.com/GoogleChromeLabs/worker-plugin)
+- [worker-plugin](https://github.com/GoogleChromeLabs/worker-plugin) ✅
 - [worker-loader](https://github.com/webpack-contrib/worker-loader)
 
 ### Parcel
