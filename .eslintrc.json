@@ -42,7 +42,8 @@
     "@typescript-eslint/camelcase": ["error", { "allow": ["^unstable_"] }],
     "import/no-duplicates": "off",
     "no-restricted-globals": "off",
-    "no-restricted-syntax": "off"
+    "no-restricted-syntax": "off",
+    "arrow-parens": ["error", "as-needed", { "requireForBlockBody": true }]
   },
   "overrides": [{
     "files": ["__tests__/**/*"],
