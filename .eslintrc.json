@@ -40,7 +40,9 @@
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "camelcase": ["error", { "allow": ["^unstable_"] }],
     "@typescript-eslint/camelcase": ["error", { "allow": ["^unstable_"] }],
-    "import/no-duplicates": "off"
+    "import/no-duplicates": "off",
+    "no-restricted-globals": "off",
+    "no-restricted-syntax": "off"
   },
   "overrides": [{
     "files": ["__tests__/**/*"],

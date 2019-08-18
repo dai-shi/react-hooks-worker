@@ -8,8 +8,19 @@ const calcFib = (x: number) => {
   return fib(x);
 };
 
+// we might drop support of this pattern in the future
+const blob = new Blob([
+  `self.func = ${calcFib.toString()};`,
+  'self.onmessage = (e) => {',
+  '  const result = self.func(e.data);',
+  '  self.postMessage(result);',
+  '};',
+], { type: 'text/javascript' });
+const url = URL.createObjectURL(blob);
+const createWorker = () => new Worker(url);
+
 const CalcFib: React.FC<{ count: number }> = ({ count }) => {
-  const { result, error } = useWorker(calcFib, count);
+  const { result, error } = useWorker(createWorker, count);
   if (error) return <div>Error: {error}</div>;
   return <div>Result: {result}</div>;
 };
