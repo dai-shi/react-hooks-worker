@@ -22,7 +22,7 @@ npm install react-hooks-worker
 
 ## Usage
 
-slow_fib.js:
+slow_fib.worker.js:
 ```javascript
 import { exposeWorker } from 'react-hooks-worker';
 
@@ -37,7 +37,7 @@ import React from 'react';
 
 import { useWorker } from 'react-hooks-worker';
 
-const createWorker = () => new Worker('./slow_fib', { type: 'module' });
+const createWorker = () => new Worker('./slow_fib.worker', { type: 'module' });
 
 const CalcFib = ({ count }) => {
   const { result, error } = useWorker(createWorker, count);

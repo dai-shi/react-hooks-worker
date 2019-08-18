@@ -11,7 +11,7 @@ describe('basic spec', () => {
   });
 
   it('should create a component', () => {
-    const createWorker = () => new Worker('./slow_fib');
+    const createWorker = () => new Worker('./slow_fib.worker');
     const CalcFib = ({ count }) => {
       const { result, error } = useWorker(createWorker, count);
       if (error) return <div>Error: {error}</div>;
