@@ -6,7 +6,7 @@ import {
 } from 'react';
 
 const initialState = { result: null, error: null };
-const reducer = (state, action) => {
+const reducer = (_state, action) => {
   switch (action.type) {
     case 'init':
       return initialState;
