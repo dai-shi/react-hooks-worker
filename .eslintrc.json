@@ -25,7 +25,6 @@
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error",
     "@typescript-eslint/explicit-function-return-type": "off",
-    "@typescript-eslint/indent": ["error", 2],
     "@typescript-eslint/prefer-interface": "off",
     "react/jsx-filename-extension": ["error", { "extensions": [".js", ".tsx"] }],
     "react/prop-types": "off",
@@ -38,8 +37,6 @@
       ]
     }],
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
-    "camelcase": ["error", { "allow": ["^unstable_"] }],
-    "@typescript-eslint/camelcase": ["error", { "allow": ["^unstable_"] }],
     "import/no-duplicates": "off",
     "no-restricted-globals": "off",
     "no-restricted-syntax": "off",
