@@ -29,13 +29,7 @@
     "react/prop-types": "off",
     "react/jsx-one-expression-per-line": "off",
     "import/prefer-default-export": "off",
-    "import/no-unresolved": ["error", {
-      "ignore": [
-        "react-hooks-worker",
-        "node-fetch"
-      ]
-    }],
-    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "import/no-unresolved": ["error", { "ignore": ["react-hooks-worker", "node-fetch"] }],
     "import/no-duplicates": "off",
     "no-restricted-globals": "off",
     "no-restricted-syntax": "off",
@@ -45,6 +39,9 @@
     "files": ["__tests__/**/*"],
     "env": {
       "jest": true
+    },
+    "rules": {
+      "import/no-extraneous-dependencies": ["error", { "devDependencies": true }]
     }
   }]
 }
