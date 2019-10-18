@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 ### Changed
+- Refactor to useState instead of useReducer
+
+## [0.8.0] - 2019-08-18
+### Changed
 - BREAKING CHANGE: worker-based API (#10)
 
 ## [0.7.0] - 2019-07-13

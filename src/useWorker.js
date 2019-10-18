@@ -2,39 +2,25 @@ import {
   useEffect,
   useMemo,
   useRef,
-  useReducer,
+  useState,
 } from 'react';
 
-const initialState = { result: null, error: null };
-const reducer = (_state, action) => {
-  switch (action.type) {
-    case 'init':
-      return initialState;
-    case 'result':
-      return { result: action.result, error: null };
-    case 'error':
-      return { result: null, error: 'error' };
-    case 'messageerror':
-      return { result: null, error: 'messageerror' };
-    default:
-      throw new Error('no such action type');
-  }
-};
+const initialState = {};
 
 export const useWorker = (createWorker, input) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, setState] = useState(initialState);
   const worker = useMemo(createWorker, [createWorker]);
   const lastWorker = useRef(null);
   useEffect(() => {
     lastWorker.current = worker;
-    let dispatchSafe = action => dispatch(action);
-    worker.onmessage = e => dispatchSafe({ type: 'result', result: e.data });
-    worker.onerror = () => dispatchSafe({ type: 'error' });
-    worker.onmessageerror = () => dispatchSafe({ type: 'messageerror' });
+    let setStateSafe = nextState => setState(nextState);
+    worker.onmessage = e => setStateSafe({ result: e.data });
+    worker.onerror = () => setStateSafe({ error: 'error' });
+    worker.onmessageerror = () => setStateSafe({ error: 'messageerror' });
     const cleanup = () => {
-      dispatchSafe = () => null; // we should not dispatch after cleanup.
+      setStateSafe = () => null; // we should not setState after cleanup.
       worker.terminate();
-      dispatch({ type: 'init' });
+      setState(initialState);
     };
     return cleanup;
   }, [worker]);

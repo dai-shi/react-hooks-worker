@@ -2,8 +2,8 @@ export type UseWorker = <Result>(
   creaetWorker: () => Worker,
   input: unknown
 ) => {
-  result: Result | null;
-  error: 'error' | 'messageerror' | null;
+  result?: Result;
+  error?: 'error' | 'messageerror';
 };
 
 export type ExposeWorker = (func: Function) => void;
