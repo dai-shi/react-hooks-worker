@@ -1,8 +1,10 @@
 # Change Log
 
 ## [Unreleased]
+
+## [0.9.0] - 2019-10-18
 ### Changed
-- Refactor to useState instead of useReducer
+- Refactor to useState instead of useReducer (smaller size)
 
 ## [0.8.0] - 2019-08-18
 ### Changed
