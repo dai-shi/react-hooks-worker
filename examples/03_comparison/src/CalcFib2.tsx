@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 const fib = (i: number): number => (i <= 1 ? i : fib(i - 1) + fib(i - 2));
 

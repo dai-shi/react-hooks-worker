@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { useEffect, useReducer, useState } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 
 import CalcFib from './CalcFib';
 import CalcFib2 from './CalcFib2';

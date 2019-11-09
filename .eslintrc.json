@@ -30,7 +30,6 @@
     "react/jsx-one-expression-per-line": "off",
     "import/prefer-default-export": "off",
     "import/no-unresolved": ["error", { "ignore": ["react-hooks-worker", "node-fetch"] }],
-    "import/no-duplicates": "off",
     "no-restricted-globals": "off",
     "no-restricted-syntax": "off",
     "arrow-parens": ["error", "as-needed", { "requireForBlockBody": true }]
