@@ -12,8 +12,6 @@ require("core-js/modules/es.array.iterator");
 
 require("core-js/modules/es.date.to-string");
 
-require("core-js/modules/es.object.define-property");
-
 require("core-js/modules/es.object.to-string");
 
 require("core-js/modules/es.regexp.to-string");
