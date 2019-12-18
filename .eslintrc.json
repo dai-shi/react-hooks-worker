@@ -29,10 +29,9 @@
     "react/prop-types": "off",
     "react/jsx-one-expression-per-line": "off",
     "import/prefer-default-export": "off",
-    "import/no-unresolved": ["error", { "ignore": ["react-hooks-worker", "node-fetch"] }],
+    "import/no-unresolved": ["error", { "ignore": ["react-hooks-worker"] }],
     "no-restricted-globals": "off",
-    "no-restricted-syntax": "off",
-    "arrow-parens": ["error", "as-needed", { "requireForBlockBody": true }]
+    "no-restricted-syntax": "off"
   },
   "overrides": [{
     "files": ["__tests__/**/*"],

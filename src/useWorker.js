@@ -13,8 +13,8 @@ export const useWorker = (createWorker, input) => {
   const lastWorker = useRef(null);
   useEffect(() => {
     lastWorker.current = worker;
-    let setStateSafe = nextState => setState(nextState);
-    worker.onmessage = e => setStateSafe({ result: e.data });
+    let setStateSafe = (nextState) => setState(nextState);
+    worker.onmessage = (e) => setStateSafe({ result: e.data });
     worker.onerror = () => setStateSafe({ error: 'error' });
     worker.onmessageerror = () => setStateSafe({ error: 'messageerror' });
     const cleanup = () => {

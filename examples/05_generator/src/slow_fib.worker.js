@@ -7,7 +7,7 @@ async function* fib(x) {
   while (i < x) {
     yield `(calculating...) ${x1}`;
     // eslint-disable-next-line no-await-in-loop
-    await new Promise(r => setTimeout(r, 100));
+    await new Promise((r) => setTimeout(r, 100));
     [x1, x2] = [x2, x1 + x2];
     i += 1;
   }

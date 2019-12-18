@@ -5,7 +5,7 @@ import CalcFib2 from './CalcFib2';
 
 const App = () => {
   const [count, setCount] = useState(35);
-  const [mode, toggle] = useReducer(m => (m === 'normal' ? 'worker' : 'normal'), 'worker');
+  const [mode, toggle] = useReducer((m) => (m === 'normal' ? 'worker' : 'normal'), 'worker');
   useEffect(() => {
     const timer = setTimeout(() => {
       if (count % 2) {
