@@ -20,11 +20,11 @@
     "eslint": "eslint --ext .js,.ts,.tsx --ignore-pattern dist .",
     "jest": "jest",
     "tsc-test": "tsc --project . --noEmit",
-    "examples:minimal": "DIR=01_minimal EXT=js webpack-dev-server",
-    "examples:typescript": "DIR=02_typescript webpack-dev-server",
-    "examples:comparison": "DIR=03_comparison webpack-dev-server",
-    "examples:inline": "DIR=04_inline webpack-dev-server",
-    "examples:generator": "DIR=05_generator webpack-dev-server"
+    "examples:01_minimal": "DIR=01_minimal EXT=js webpack-dev-server",
+    "examples:02_typescript": "DIR=02_typescript webpack-dev-server",
+    "examples:03_comparison": "DIR=03_comparison webpack-dev-server",
+    "examples:04_inline": "DIR=04_inline webpack-dev-server",
+    "examples:05_generator": "DIR=05_generator webpack-dev-server"
   },
   "keywords": [
     "react",
@@ -43,7 +43,6 @@
     "@types/react-dom": "^16.9.4",
     "@typescript-eslint/eslint-plugin": "^2.13.0",
     "@typescript-eslint/parser": "^2.13.0",
-    "babel-core": "^7.0.0-bridge.0",
     "babel-loader": "^8.0.6",
     "core-js": "^3.6.1",
     "eslint": "^6.8.0",
