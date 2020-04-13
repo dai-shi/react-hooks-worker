@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "core-js": "latest",
     "react": "latest",
     "react-dom": "latest",
     "react-hooks-worker": "latest",
