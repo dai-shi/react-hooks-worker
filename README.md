@@ -1,8 +1,8 @@
 # react-hooks-worker
 
-[![Build Status](https://travis-ci.com/dai-shi/react-hooks-worker.svg?branch=master)](https://travis-ci.com/dai-shi/react-hooks-worker)
-[![npm version](https://badge.fury.io/js/react-hooks-worker.svg)](https://badge.fury.io/js/react-hooks-worker)
-[![bundle size](https://badgen.net/bundlephobia/minzip/react-hooks-worker)](https://bundlephobia.com/result?p=react-hooks-worker)
+[![CI](https://img.shields.io/github/workflow/status/dai-shi/react-hooks-worker/CI)](https://github.com/dai-shi/react-hooks-worker/actions?query=workflow%3ACI)
+[![npm](https://img.shields.io/npm/v/react-hooks-worker)](https://www.npmjs.com/package/react-hooks-worker)
+[![size](https://img.shields.io/bundlephobia/minzip/react-hooks-worker)](https://bundlephobia.com/result?p=react-hooks-worker)
 
 React custom hooks for web workers.
 
