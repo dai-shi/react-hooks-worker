@@ -71,7 +71,7 @@ Not everything is tested, and we appreciate for your help.
 
 ### Webpack
 
--   [worker-plugin](https://github.com/GoogleChromeLabs/worker-plugin) ✅
+-   [worker-plugin](https://github.com/GoogleChromeLabs/worker-plugin) :white_check_mark:
 -   [worker-loader](https://github.com/webpack-contrib/worker-loader)
 
 ### Parcel
