@@ -7,20 +7,23 @@
     "type": "git",
     "url": "https://github.com/dai-shi/react-hooks-worker.git"
   },
+  "source": "./src/index.ts",
   "main": "./dist/index.js",
-  "module": "./src/index.js",
-  "types": "./src/index.d.ts",
+  "module": "./dist/index.esm.js",
+  "browser": "./dist/index.umd.js",
+  "types": "./dist/src/index.d.ts",
   "sideEffects": false,
   "files": [
     "src",
     "dist"
   ],
   "scripts": {
-    "compile": "babel src -d dist",
+    "compile": "microbundle build --format cjs,es,umd",
     "test": "npm run eslint && npm run tsc-test && npm run jest",
     "eslint": "eslint --ext .js,.ts,.tsx --ignore-pattern dist .",
-    "jest": "jest",
+    "jest": "jest --preset ts-jest/presets/js-with-ts",
     "tsc-test": "tsc --project . --noEmit",
+    "apidoc": "documentation readme --section API --markdown-toc false --parse-extension ts src/*.ts",
     "examples:01_minimal": "DIR=01_minimal EXT=js webpack-dev-server",
     "examples:02_typescript": "DIR=02_typescript webpack-dev-server",
     "examples:03_comparison": "DIR=03_comparison webpack-dev-server",
@@ -36,47 +39,34 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "@babel/cli": "^7.7.7",
-    "@babel/core": "^7.7.7",
-    "@babel/preset-env": "^7.7.7",
-    "@babel/preset-react": "^7.7.4",
-    "@types/react": "^16.9.17",
-    "@types/react-dom": "^16.9.4",
-    "@typescript-eslint/eslint-plugin": "^2.13.0",
-    "@typescript-eslint/parser": "^2.13.0",
-    "babel-loader": "^8.0.6",
-    "core-js": "^3.6.1",
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb": "^18.0.1",
-    "eslint-plugin-import": "^2.19.1",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.17.0",
-    "eslint-plugin-react-hooks": "^2.3.0",
-    "html-webpack-plugin": "^3.2.0",
-    "jest": "^24.9.0",
-    "react": "^16.10.2",
-    "react-dom": "^16.12.0",
-    "react-test-renderer": "^16.12.0",
-    "ts-loader": "^6.2.1",
-    "typescript": "^3.7.4",
-    "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.10.1",
-    "worker-plugin": "^3.2.0"
+    "@types/jest": "^26.0.3",
+    "@types/react": "^16.9.41",
+    "@types/react-dom": "^16.9.8",
+    "@typescript-eslint/eslint-plugin": "^3.5.0",
+    "@typescript-eslint/parser": "^3.5.0",
+    "documentation": "^13.0.1",
+    "eslint": "^7.3.1",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.2",
+    "eslint-plugin-react-hooks": "^4.0.5",
+    "html-webpack-plugin": "^4.3.0",
+    "jest": "^26.1.0",
+    "microbundle": "^0.12.2",
+    "npm-run-all": "^4.1.5",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-test-renderer": "^16.13.1",
+    "ts-jest": "^26.1.1",
+    "ts-loader": "^7.0.5",
+    "typescript": "^3.9.5",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
+    "worker-plugin": "^4.0.3"
   },
   "peerDependencies": {
     "react": ">=16.8.0"
-  },
-  "babel": {
-    "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "useBuiltIns": "usage",
-          "corejs": 3
-        }
-      ],
-      "@babel/preset-react"
-    ]
   }
 }
