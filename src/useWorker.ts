@@ -33,7 +33,7 @@ const initialState: State = {};
 export function useWorker(createWorker: () => Worker, input: unknown) {
   const [state, setState] = useState<State>(initialState);
   const worker = useMemo(createWorker, [createWorker]);
-  const lastWorker = useRef<Worker>();
+  const lastWorker = useRef<Worker>(worker);
   useEffect(() => {
     lastWorker.current = worker;
     let setStateSafe = (nextState: State) => setState(nextState);
@@ -48,9 +48,7 @@ export function useWorker(createWorker: () => Worker, input: unknown) {
     return cleanup;
   }, [worker]);
   useEffect(() => {
-    if (lastWorker.current) {
-      lastWorker.current.postMessage(input);
-    }
+    lastWorker.current.postMessage(input);
   }, [input]);
   return state;
 }
