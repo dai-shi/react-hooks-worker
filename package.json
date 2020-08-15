@@ -1,10 +1,7 @@
 {
   "name": "react-hooks-worker",
   "description": "React custom hooks for web workers",
-  "version": "1.0.0-alpha.2",
-  "publishConfig": {
-    "tag": "next"
-  },
+  "version": "1.0.0",
   "author": "Daishi Kato",
   "repository": {
     "type": "git",

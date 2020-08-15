@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [1.0.0] - 2020-08-15
+### Changed
+- Modern build
+
 ## [0.9.0] - 2019-10-18
 ### Changed
 - Refactor to useState instead of useReducer (smaller size)
