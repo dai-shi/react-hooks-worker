@@ -3,6 +3,7 @@
 [![CI](https://img.shields.io/github/workflow/status/dai-shi/react-hooks-worker/CI)](https://github.com/dai-shi/react-hooks-worker/actions?query=workflow%3ACI)
 [![npm](https://img.shields.io/npm/v/react-hooks-worker)](https://www.npmjs.com/package/react-hooks-worker)
 [![size](https://img.shields.io/bundlephobia/minzip/react-hooks-worker)](https://bundlephobia.com/result?p=react-hooks-worker)
+[![discord](https://img.shields.io/discord/627656437971288081)](https://discord.gg/MrQdmzd)
 
 React custom hooks for web workers.
 
