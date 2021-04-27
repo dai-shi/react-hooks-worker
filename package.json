@@ -64,6 +64,7 @@
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0",
+    "worker-loader": "^3.0.8",
     "worker-plugin": "^5.0.0"
   },
   "peerDependencies": {

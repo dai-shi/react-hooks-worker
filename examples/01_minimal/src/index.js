@@ -3,7 +3,10 @@ import ReactDOM from 'react-dom';
 
 import { useWorker } from 'react-hooks-worker';
 
-const createWorker = () => new Worker('./slow_fib.worker', { type: 'module' });
+// eslint-disable-next-line import/no-webpack-loader-syntax, import/no-unresolved, import/extensions
+import SlowFibWorker from 'worker-loader!./slow_fib.worker';
+
+const createWorker = () => new SlowFibWorker();
 
 const CalcFib = ({ count }) => {
   const { result, error } = useWorker(createWorker, count);
