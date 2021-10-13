@@ -1,13 +1,11 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const WorkerPlugin = require('worker-plugin');
-/* eslint-enable @typescript-eslint/no-var-requires */
 
 const { DIR, EXT = 'ts' } = process.env;
 
 module.exports = {
   mode: 'development',
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'cheap-module-source-map',
   entry: `./examples/${DIR}/src/index.${EXT}`,
   output: {
     publicPath: '/',
@@ -16,7 +14,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: `./examples/${DIR}/public/index.html`,
     }),
-    new WorkerPlugin(),
   ],
   module: {
     rules: [{
@@ -36,7 +33,9 @@ module.exports = {
   },
   devServer: {
     port: process.env.PORT || '8080',
-    contentBase: `./examples/${DIR}/public`,
+    static: {
+      directory: `./examples/${DIR}/public`,
+    },
     historyApiFallback: true,
   },
 };

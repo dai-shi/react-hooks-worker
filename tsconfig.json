@@ -3,7 +3,7 @@
     "strict": true,
     "target": "es5",
     "esModuleInterop": true,
-    "module": "es2015",
+    "module": "esnext",
     "moduleResolution": "node",
     "jsx": "react",
     "allowJs": true,

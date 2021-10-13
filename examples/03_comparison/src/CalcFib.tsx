@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useWorker } from 'react-hooks-worker';
 
-const createWorker = () => new Worker('./slow_fib.worker', { type: 'module' });
+const createWorker = () => new Worker(new URL('./slow_fib.worker', import.meta.url));
 
 const CalcFib: React.FC<{ count: number }> = ({ count }) => {
   const { result, error } = useWorker(createWorker, count);

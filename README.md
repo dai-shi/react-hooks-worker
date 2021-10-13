@@ -49,7 +49,7 @@ import React from 'react';
 
 import { useWorker } from 'react-hooks-worker';
 
-const createWorker = () => new Worker('./slow_fib.worker', { type: 'module' });
+const createWorker = () => new Worker(new URL('./slow_fib.worker', import.meta.url));
 
 const CalcFib = ({ count }) => {
   const { result, error } = useWorker(createWorker, count);
@@ -130,7 +130,7 @@ If it's referentially changed, it will create a new worker and terminate the old
 ```javascript
 import { useWorker } from 'react-hooks-worker';
 
-const createWorker = () => new Worker('./slow_fib.worker', { type: 'module' });
+const createWorker = () => new Worker(new URL('./slow_fib.worker', import.meta.url));
 
 const CalcFib = ({ count }) => {
   const { result, error } = useWorker(createWorker, count);
