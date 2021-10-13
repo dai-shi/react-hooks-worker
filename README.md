@@ -19,10 +19,10 @@ Results returned by Web Workers are stored in a React local state.
 
 Developers can implement a worker as:
 
--   sync function
--   async function
--   sync generator function
--   async generator function
+*   sync function
+*   async function
+*   sync generator function
+*   async generator function
 
 ## Install
 
@@ -74,14 +74,14 @@ expose worker
 
 You can expose any function that returns:
 
--   A value
--   A promise
--   An iterable
--   An async iterable
+*   A value
+*   A promise
+*   An iterable
+*   An async iterable
 
 #### Parameters
 
--   `func` **function (data: any): any** 
+*   `func` **function (data: any): any** 
 
 #### Examples
 
@@ -102,8 +102,8 @@ If it's referentially changed, it will create a new worker and terminate the old
 
 #### Parameters
 
--   `createWorker` **function (): [Worker](https://developer.mozilla.org/docs/Web/JavaScript)** 
--   `input` **any** 
+*   `createWorker` **function (): [Worker](https://developer.mozilla.org/docs/Web/JavaScript)** 
+*   `input` **any** 
 
 #### Examples
 
@@ -141,5 +141,5 @@ You can also try them in codesandbox.io:
 
 ## Blogs
 
--   [Playing with React Hooks and Web Workers](https://blog.axlight.com/posts/playing-with-react-hooks-and-web-workers/)
--   [How I Developed React Hooks for Web Workers](https://blog.axlight.com/posts/how-i-developed-react-hooks-for-web-workers/)
+*   [Playing with React Hooks and Web Workers](https://blog.axlight.com/posts/playing-with-react-hooks-and-web-workers/)
+*   [How I Developed React Hooks for Web Workers](https://blog.axlight.com/posts/how-i-developed-react-hooks-for-web-workers/)
