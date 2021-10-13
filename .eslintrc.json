@@ -33,7 +33,9 @@
     "import/prefer-default-export": "off",
     "import/no-unresolved": ["error", { "ignore": ["react-hooks-worker"] }],
     "no-restricted-globals": "off",
-    "no-restricted-syntax": "off"
+    "no-restricted-syntax": "off",
+    "no-use-before-define": "off",
+    "no-unused-vars": "off"
   },
   "overrides": [{
     "files": ["__tests__/**/*"],
