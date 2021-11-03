@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [1.0.2] - 2021-11-04
+### Changed
+- fix: proper typing for useWorker #34
+
 ## [1.0.1] - 2021-10-13
 ### Changed
 - Fix package.json properly for ESM
