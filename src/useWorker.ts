@@ -5,12 +5,12 @@ import {
   useState,
 } from 'react';
 
-type State = {
-  result?: unknown;
+type State<Result> = {
+  result?: Result;
   error?: 'error' | 'messageerror';
 };
 
-const initialState: State = {};
+const initialState = {};
 
 /**
  * use worker
@@ -30,13 +30,13 @@ const initialState: State = {};
  *   return <div>Result: {result}</div>;
  * };
  */
-export function useWorker(createWorker: () => Worker, input: unknown) {
-  const [state, setState] = useState<State>(initialState);
+export function useWorker<Input, Result>(createWorker: () => Worker, input: Input) {
+  const [state, setState] = useState<State<Result>>(initialState);
   const worker = useMemo(createWorker, [createWorker]);
   const lastWorker = useRef<Worker>(worker);
   useEffect(() => {
     lastWorker.current = worker;
-    let setStateSafe = (nextState: State) => setState(nextState);
+    let setStateSafe = (nextState: State<Result>) => setState(nextState);
     worker.onmessage = (e) => setStateSafe({ result: e.data });
     worker.onerror = () => setStateSafe({ error: 'error' });
     worker.onmessageerror = () => setStateSafe({ error: 'messageerror' });
