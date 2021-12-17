@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [1.0.3] - 2021-12-17
+### Changed
+- fix: handle nullish result from worker function #36
+
 ## [1.0.2] - 2021-11-04
 ### Changed
 - fix: proper typing for useWorker #34
