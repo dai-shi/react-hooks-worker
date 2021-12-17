@@ -37,7 +37,8 @@
     "examples:02_typescript": "DIR=02_typescript webpack-dev-server",
     "examples:03_comparison": "DIR=03_comparison webpack-dev-server",
     "examples:04_inline": "DIR=04_inline webpack-dev-server",
-    "examples:05_generator": "DIR=05_generator webpack-dev-server"
+    "examples:05_generator": "DIR=05_generator webpack-dev-server",
+    "examples:06_async": "DIR=06_async webpack-dev-server"
   },
   "keywords": [
     "react",
