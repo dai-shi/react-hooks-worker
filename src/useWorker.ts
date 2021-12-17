@@ -41,6 +41,7 @@ export function useWorker<Input, Result>(createWorker: () => Worker, input: Inpu
     worker.onerror = () => setStateSafe({ error: 'error' });
     worker.onmessageerror = () => setStateSafe({ error: 'messageerror' });
     const cleanup = () => {
+      // eslint-disable-next-line react/function-component-definition
       setStateSafe = () => null; // we should not setState after cleanup.
       worker.terminate();
       setState(initialState);
