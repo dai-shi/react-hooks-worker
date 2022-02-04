@@ -12,7 +12,8 @@
     "browser": true
   },
   "globals": {
-    "AbortController": false
+    "AbortController": false,
+    "WindowPostMessageOptions": false
   },
   "settings": {
     "import/resolver": {

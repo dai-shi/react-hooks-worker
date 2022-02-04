@@ -17,15 +17,18 @@
  *
  * exposeWorker(fib);
  */
-export function exposeWorker(func: (data: any) => any) {
+export function exposeWorker(
+  func: (data: any) => any,
+  getOptions?: () => WindowPostMessageOptions,
+) {
   self.onmessage = async (e: MessageEvent) => {
     const r = func(e.data);
     if (r && r[Symbol.asyncIterator]) {
-      for await (const i of r) (self.postMessage as any /* FIXME */)(i);
+      for await (const i of r) (self.postMessage)(i, getOptions?.());
     } else if (r && r[Symbol.iterator]) {
-      for (const i of r) (self.postMessage as any /* FIXME */)(i);
+      for (const i of r) (self.postMessage)(i, getOptions?.());
     } else {
-      (self.postMessage as any /* FIXME */)(await r);
+      (self.postMessage)(await r, getOptions?.());
     }
   };
 }
