@@ -30,7 +30,11 @@ const initialState = {};
  *   return <div>Result: {result}</div>;
  * };
  */
-export function useWorker<Input, Result>(createWorker: () => Worker, input: Input) {
+export function useWorker<Input, Result>(
+  createWorker: () => Worker,
+  input: Input,
+  getOptions?: () => WindowPostMessageOptions,
+) {
   const [state, setState] = useState<State<Result>>(initialState);
   const worker = useMemo(createWorker, [createWorker]);
   const lastWorker = useRef<Worker>(worker);
@@ -49,7 +53,7 @@ export function useWorker<Input, Result>(createWorker: () => Worker, input: Inpu
     return cleanup;
   }, [worker]);
   useEffect(() => {
-    lastWorker.current.postMessage(input);
-  }, [input]);
+    lastWorker.current.postMessage(input, getOptions?.());
+  }, [input, getOptions]);
   return state;
 }
