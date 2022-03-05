@@ -1,6 +1,8 @@
 # Change Log
 
 ## [Unreleased]
+
+## [1.0.4] - 2022-03-05
 ### Changed
 - fix: support postMessage options #42
 
