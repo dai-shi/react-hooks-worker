@@ -49,7 +49,10 @@ import React from 'react';
 
 import { useWorker } from 'react-hooks-worker';
 
-const createWorker = () => new Worker(new URL('./slow_fib.worker', import.meta.url));
+const createWorker = () => new Worker(
+  new URL('./slow_fib.worker', import.meta.url),
+  { type: 'module' }
+);
 
 const CalcFib = ({ count }) => {
   const { result, error } = useWorker(createWorker, count);
@@ -94,6 +97,7 @@ You can expose any function that returns:
 #### Parameters
 
 *   `func` **function (data: any): any** 
+*   `getOptions` **function (): WindowPostMessageOptions?** 
 
 #### Examples
 
@@ -115,14 +119,18 @@ If it's referentially changed, it will create a new worker and terminate the old
 #### Parameters
 
 *   `createWorker` **function (): [Worker](https://developer.mozilla.org/docs/Web/JavaScript)** 
-*   `input` **any** 
+*   `input` **Input** 
+*   `getOptions` **function (): WindowPostMessageOptions?** 
 
 #### Examples
 
 ```javascript
 import { useWorker } from 'react-hooks-worker';
 
-const createWorker = () => new Worker(new URL('./slow_fib.worker', import.meta.url));
+const createWorker = () => new Worker(
+  new URL('./slow_fib.worker', import.meta.url),
+  { type: 'module' }
+);
 
 const CalcFib = ({ count }) => {
   const { result, error } = useWorker(createWorker, count);
