@@ -17,7 +17,7 @@ const blob = new Blob([
   '};',
 ], { type: 'text/javascript' });
 const url = URL.createObjectURL(blob);
-const createWorker = () => new Worker(url);
+const createWorker = () => new Worker(url, { type: 'module' });
 
 const CalcFib: React.FC<{ count: number }> = ({ count }) => {
   const { result, error } = useWorker(createWorker, count);
